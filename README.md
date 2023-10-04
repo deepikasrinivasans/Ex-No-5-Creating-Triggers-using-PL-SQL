@@ -35,11 +35,9 @@ insert into employe values(1,'Kar','IT',1000000);
 insert into employe values(2,'Boha','SALES',500000)
 ```
 ## Create employee table
-![image](https://github.com/Brindha77/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/118889143/3f321740-7209-4fa9-bb97-c8d1f861d5aa)
-
+![DBMSEXP1](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/7ff8cc9b-7e03-4da1-a40a-0523fa5fc346)
 ## Create salary_log table
-![image](https://github.com/Brindha77/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/118889143/3ce554ad-7f85-4590-8112-0ff4d5f1e974)
-
+![DBMSEX2](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/4f3483a4-4dc1-4e7b-9f44-c27cd3f3225c)
 ## PLSQL Trigger code
 ```
 -- Create the trigger
@@ -68,7 +66,6 @@ SELECT * FROM employe;
 SELECT * FROM sal_log;
 ```
 ## Output:
-![db ex 5](https://github.com/Brindha77/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/118889143/40b9a2ab-e8d1-4712-8a18-786ac0bf690e)
-
+![DBMSEX3](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/99a008e3-5711-428e-a6c8-af366f61574f)
 ## Result:
 Thus the program for creating triggers has been implemented successfully.
