@@ -14,58 +14,44 @@ To create a Trigger using PL/SQL.
 8. Display the employee table, salary_log table.
 
 ## Program:
-```
-CREATE TABLE employe(
-  empid NUMBER,
-  empname VARCHAR2(10),
-  dept VARCHAR2(10),
-  salary NUMBER
-);
-
-CREATE TABLE salary_log (
-  log_id NUMBER GENERATED ALWAYS AS IDENTITY,
-  empid NUMBER,
-  empname VARCHAR2(10),
-  old_salary NUMBER,
-  new_salary NUMBER,
-  update_date DATE
-);
--- Insert the values in the employee table
-insert into employe values(1,'Kar','IT',1000000);
-insert into employe values(2,'Boha','SALES',500000)
-```
 ## Create employee table
-![DBMSEXP1](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/7ff8cc9b-7e03-4da1-a40a-0523fa5fc346)
+```
+SQL> create table EmployeeDB(Empno NUMBER,Empname VARCHAR2(10),Dept VARCHAR2(10),Desig VARCHAR2(20),Salary NUMBER);
+```
+![sql0 1](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/45f1d42a-9bb4-44d6-bf01-7d22c1cdbf3a)
+
 ## Create salary_log table
-![DBMSEX2](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/4f3483a4-4dc1-4e7b-9f44-c27cd3f3225c)
+```
+SQL> create table Wage(Login_ID NUMBER GENERATED ALWAYS AS IDENTITY,Empno NUMBER,Empname VARCHAR2(10),Old_Salary NUMBER,New_Salary NUMBER,Updated_on DATE);
+```
+![sqlsalwages](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/983513da-e100-43bb-82c5-991be0594050)
+## Inserting data into the employed table:
+```
+SQL> insert into EmployeeDB values(101,'Deepika','AI-DS','Senior Architect',300000);
+SQL> insert into EmployeeDB values(102,'Vasundra','AI-ML','System Engineer',250000);
+SQL> insert into EmployeeDB values(103,'Abinaya','CSE','Software Tester',230000);
+SQL> insert into EmployeeDB values(104,'Mike','EEE','Electrical Asst',130000);
+SQL> insert into EmployeeDB values(105,'Srini','IT','System Admin',110000);
+```
+![sql0 2](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/07fed900-23d4-45f4-934f-6e6c6886f01b)
+## Update the salary of an employed:
+```
+SQL> update EmployeeDB SET Salary=120000 where Empno=103;
+```
+![sqlrowupd](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/d16c99b5-62c8-4ebb-8869-2fdfb9382ae1)
+
 ## PLSQL Trigger code
 ```
--- Create the trigger
-CREATE OR REPLACE TRIGGER log_sal_update
-BEFORE UPDATE ON employe
-FOR EACH ROW
-BEGIN
-  IF :OLD.salary != :NEW.salary THEN
-    INSERT INTO sal_log (empid, empname, old_salary, new_salary, update_date)
-    VALUES (:OLD.empid, :OLD.empname, :OLD.salary, :NEW.salary, SYSDATE);
-  END IF;
-END;
-/
--- Insert the values in the employee table
-insert into employe values(1,'Kar','IT',1000000);
-insert into employe values(2,'Boha','SALES',500000);
-
--- Update the salary of an employee
-UPDATE employe
-SET salary = 60000
-WHERE empid = 1;
--- Display the employee table
-SELECT * FROM employe;
-
--- Display the salary_log table
-SELECT * FROM sal_log;
+SQL> CREATE OR REPLACE TRIGGER Salary_Update BEFORE UPDATE ON EmployeeDB FOR EACH ROW BEGIN IF :OLD.Salary != :NEW.Salary THEN INSERT INTO Sal_Wages(Empno, Empname, Old_Salary, New_Salary, Updated_on) VALUES (:OLD.Empno, :OLD.Empname, :OLD.Salary, :NEW.Salary, SYSDATE);
+  2  END IF;
+  3  END;
+  4  /
 ```
+![sql0 3](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/6ae564bb-f550-4938-a937-e1d169cf2999)
+
 ## Output:
-![DBMSEX3](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/99a008e3-5711-428e-a6c8-af366f61574f)
+![sqlemployyee](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/e8b54341-55e2-490b-8a46-bb574d682eb7)
+![sql salaryout](https://github.com/deepikasrinivasans/Ex-No-5-Creating-Triggers-using-PL-SQL/assets/119393935/1900030f-6202-417b-8c5f-4846b2c95e01)
+
 ## Result:
 Thus the program for creating triggers has been implemented successfully.
